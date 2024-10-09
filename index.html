@@ -16,9 +16,17 @@
         }
 
         @keyframes backgroundMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         canvas {
@@ -157,7 +165,8 @@
         }
 
         @keyframes bounce {
-            0%, 100% {
+            0%,
+            100% {
                 transform: translateY(0);
             }
 
@@ -259,6 +268,7 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
+        // Resize canvas on window resize
         window.addEventListener('resize', function () {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -277,7 +287,13 @@
                 this.x += this.speedX;
                 this.y += this.speedY;
 
-                if (this.size > 0.2) this.size -= 0.1;
+                // Bounce particles off the edges
+                if (this.x + this.size > canvas.width || this.x - this.size < 0) {
+                    this.speedX = -this.speedX;
+                }
+                if (this.y + this.size > canvas.height || this.y - this.size < 0) {
+                    this.speedY = -this.speedY;
+                }
             }
 
             draw() {
@@ -289,7 +305,7 @@
             }
         }
 
-        function init() {
+        function initParticles() {
             particlesArray = [];
             for (let i = 0; i < 100; i++) {
                 const size = Math.random() * 5 + 1;
@@ -301,17 +317,17 @@
             }
         }
 
-        function animate() {
+        function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (let i = 0; i < particlesArray.length; i++) {
                 particlesArray[i].update();
                 particlesArray[i].draw();
             }
-            requestAnimationFrame(animate);
+            requestAnimationFrame(animateParticles);
         }
 
-        init();
-        animate();
+        initParticles();
+        animateParticles();
     </script>
 </body>
 
