@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,24 +10,128 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background: linear-gradient(270deg, #0073e6, #009688, #ff6f61);
+            background-size: 600% 600%;
+            animation: backgroundMove 12s ease infinite;
+        }
+
+        @keyframes backgroundMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         header {
             color: white;
-            background-color: #0073e6;
             font-size: 3rem;
             text-align: center;
             padding: 20px 0;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in;
         }
 
         h2 {
-            color: #ffffff;
-            background-color: #009688;
+            color: white;
+            background-color: rgba(0, 150, 136, 0.9);
             padding: 10px;
             font-size: 2rem;
-            animation: slideIn 3s ease-out;
+            margin: 0;
+            animation: slideIn 2s ease-out;
+        }
+
+        .des {
+            background-color: rgba(255, 250, 230, 0.8);
+            padding: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            font-weight: bold;
+            border: 2px solid #0073e6;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .links a {
+            display: block;
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .links a:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .links img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .links img:hover {
+            transform: rotate(5deg);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: white;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #0073e6;
+        }
+
+        marquee {
+            margin-top: 20px;
+            color: white;
+            background-color: #0073e6;
+            padding: 10px;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes slideIn {
@@ -40,83 +144,44 @@
             }
         }
 
-        .des {
-            background-color: #fffae6;
-            padding: 20px;
-            font-size: 1.2rem;
-            text-align: center;
-            font-weight: bold;
-            border: 2px solid #0073e6;
-            border-radius: 10px;
-            margin: 20px auto;
-            width: 90%;
-            max-width: 800px;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        table {
-            width: 100%;
-            max-width: 900px;
-            margin: 20px auto;
-            border-spacing: 20px;
-        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
 
-        table td {
-            text-align: center;
-            background-color: white;
-            padding: 15px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        table td:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        table img {
-            border-radius: 10px;
-            width: 150px;
-            height: 150px;
-        }
-
-        table a {
-            text-decoration: none;
-            color: #0073e6;
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            font-size: 1rem;
-        }
-
-        footer a {
-            color: #ffffff;
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-
-        footer a:hover {
-            color: #0073e6;
-        }
-
-        marquee {
-            margin-top: 20px;
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         @media (max-width: 768px) {
+            header {
+                font-size: 2.5rem;
+            }
+
             h2 {
                 font-size: 1.5rem;
             }
 
-            table img {
-                width: 100px;
-                height: 100px;
+            .links a {
+                width: 150px;
+            }
+
+            .links img {
+                width: 80px;
+                height: 80px;
             }
 
             .des {
@@ -127,6 +192,9 @@
 </head>
 
 <body>
+    <!-- Particle Animation Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
     <!-- Header -->
     <header>
         WELCOME TO ONE WEB
@@ -134,7 +202,7 @@
 
     <!-- Marquee -->
     <marquee loop="1" behavior="slide" scrollamount="50">
-        <h2> WE SIMPLIFY YOUR COMPLEXITY </h2>
+        <h2>WE SIMPLIFY YOUR COMPLEXITY</h2>
     </marquee>
 
     <!-- Description Section -->
@@ -146,120 +214,29 @@
 
     <!-- Links Section -->
     <div class="links">
-        <center>
-            <table>
-                <tr>
-                    <td>
-                        <a href="education.html">
-                            <img src="https://images.freecreatives.com/wp-content/uploads/2015/09/vector-icons.jpg" alt="Education">
-                            EDUCATION
-                        </a>
-                    </td>
-                    <td>
-                        <a href="travel.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSsTkDgh98PHJjQ0JwMNbjUROxrxuLTq3WeQ&usqp=CAU" alt="Travel">
-                            TRAVEL
-                        </a>
-                    </td>
-                    <td>
-                        <a href="entertainment.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQAOeLB-Ufj1COBaVFgNuGe-SDacKOy44hGQ&usqp=CAU" alt="Entertainment">
-                            ENTERTAINMENT
-                        </a>
-                    </td>
-                    <td>
-                        <a href="exampreparation.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1XmNC3qPNBFnjKlsdo1KPfBY6vG_UIxABAg&usqp=CAU" alt="Exams">
-                            EXAM PREPARATION
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="results.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZk_hdllr4Dj0gH4S_KFHdoNuKZepH3juXZQ&usqp=CAU" alt="Results">
-                            RESULTS
-                        </a>
-                    </td>
-                    <td>
-                        <a href="sports.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Z2I8rBwWI7IY4w6Z52kvO5vCETTlBj0U2A&usqp=CAU" alt="Sports">
-                            SPORTS
-                        </a>
-                    </td>
-                    <td>
-                        <a href="news.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsBUcvB0Ud0ipDKk88jceZBjtb8-n3E9CnOA&usqp=CAU" alt="News">
-                            NEWS
-                        </a>
-                    </td>
-                    <td>
-                        <a href="qa.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBblc5eDTjKpKzqg14yl_3TAgJWr_Eri6cew&usqp=CAU" alt="Q & A">
-                            Q & A
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="shopping.html">
-                            <img src="https://preply.com/wp-content/uploads/2018/04/shopping_bags.jpg" alt="Shopping">
-                            SHOPPING
-                        </a>
-                    </td>
-                    <td>
-                        <a href="history.html">
-                            <img src="https://www.spellbrand.com/wp-content/uploads/2009/01/logo-design-history-1.jpg" alt="History">
-                            HISTORY
-                        </a>
-                    </td>
-                    <td>
-                        <a href="ebook.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHVKLGPa9ilxYd9ASSigsiBIMKIxLg3_oUyA&usqp=CAU" alt="E-Books">
-                            E-BOOKS
-                        </a>
-                    </td>
-                    <td>
-                        <a href="agriculture.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM-WNOikJcIcABA4zdVuWmmfI4yoBcP8JEjA&usqp=CAU" alt="Agriculture">
-                            AGRICULTURE
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="code.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0lx3PZSshL1fbdX5_h2pX2Roxcly7yDfc4Q&usqp=CAU" alt="Coding">
-                            CODING
-                        </a>
-                    </td>
-                    <td>
-                        <a href="jobs.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHYoaF8YWci9VyGjLDXuM1hHZLdtU_b9_GxQ&usqp=CAU" alt="Jobs">
-                            JOBS
-                        </a>
-                    </td>
-                    <td>
-                        <a href="university.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKVH_DpsHjalphqzAsNbkwiRZ7XTV1gT8lZA&usqp=CAU" alt="University">
-                            UNIVERSITY
-                        </a>
-                    </td>
-                    <td>
-                        <a href="science.html">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq2K8DNcj0kSAKuQ1-d_G3dyH6N8eTGNSvFEOKwxYUwec6lZNTpahSKOz9PYCaA6JE0Oc&usqp=CAU" alt="Science">
-                            SCIENCE
-                        </a>
-                    </td>
-                </tr>
-            </table>
-        </center>
+        <a href="education.html">
+            <img src="https://images.freecreatives.com/wp-content/uploads/2015/09/vector-icons.jpg" alt="Education">
+            EDUCATION
+        </a>
+        <a href="travel.html">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSsTkDgh98PHJjQ0JwMNbjUROxrxuLTq3WeQ&usqp=CAU" alt="Travel">
+            TRAVEL
+        </a>
+        <a href="entertainment.html">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQAOeLB-Ufj1COBaVFgNuGe-SDacKOy44hGQ&usqp=CAU" alt="Entertainment">
+            ENTERTAINMENT
+        </a>
+        <a href="exampreparation.html">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1XmNC3qPNBFnjKlsdo1KPfBY6vG_UIxABAg&usqp=CAU" alt="Exams">
+            EXAM PREPARATION
+        </a>
+        <!-- Add other categories similarly -->
     </div>
 
     <!-- Footer -->
     <footer>
         <p>
-            <br> Designed and Developed By: Rajashekar Nerella <br> For more Details Contact us: <br>
+            <br> Designed and Developed By: Rajashekar Nerella <br> For more details contact: <br>
             <a href="mailto:nerellarajashekar47@gmail.com">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqA3kZ5ewOSmbHYvX6dVELIy0TqG6eiDjfQQ&usqp=CAU" alt="gmail" width="30" height="30">
             </a>
@@ -269,10 +246,73 @@
             <a href="https://github.com/Rajashekar-582">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNHi3bU20lbqJ65nMcueGp6NTtUBF7YmQ5ecFAjsDPe3CANYcxDpomsAz4QJXcvR9ztAM&usqp=CAU" alt="github" width="30" height="30">
             </a>
-            <br><br>
-            <marquee style="color: aliceblue;">This website is under development. We always try to give a better experience to our users.</marquee>
         </p>
+        <marquee>This website is under development. We always try to give a better experience to our users.</marquee>
     </footer>
+
+    <!-- JavaScript for Particles Animation -->
+    <script>
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray;
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', function () {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        class Particle {
+            constructor(x, y, size, speedX, speedY) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.speedX = speedX;
+                this.speedY = speedY;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.size > 0.2) this.size -= 0.1;
+            }
+
+            draw() {
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            for (let i = 0; i < 100; i++) {
+                const size = Math.random() * 5 + 1;
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const speedX = Math.random() * 3 - 1.5;
+                const speedY = Math.random() * 3 - 1.5;
+                particlesArray.push(new Particle(x, y, size, speedX, speedY));
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
 </body>
 
 </html>
